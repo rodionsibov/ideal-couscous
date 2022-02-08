@@ -1,7 +1,8 @@
 <script setup>
+import Component2 from './Component2.vue'
 
 </script>
 
 <template>
-    <h1>component 1</h1>
+    <Component2 />
 </template>

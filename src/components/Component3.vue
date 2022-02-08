@@ -1,7 +1,8 @@
 <script setup>
+import Component4 from './Component4.vue'
 
 </script>
 
 <template>
-    <h1>component 3</h1>
+    <Component4 />
 </template>

@@ -1,7 +1,8 @@
 <script setup>
+import Counter from './Counter.vue'
 
 </script>
 
 <template>
-    <h1>component 4</h1>
+    <Counter />
 </template>
