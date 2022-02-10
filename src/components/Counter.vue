@@ -3,6 +3,7 @@ import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 const store = useStore();
+
 onMounted(() => {
   store.dispatch("generateData");
 });
@@ -11,7 +12,9 @@ onMounted(() => {
 <template>
   <div v-if="!store.state.isLoading">
     <h1>Vuex Counter</h1>
-    <h2 class="counter">0</h2>
+    <h2 class="counter">
+      {{ $store.state.counter }}
+    </h2>
     <button>-</button>
     <input type="number" />
     <button>+</button>
