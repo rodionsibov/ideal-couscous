@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "@vue/runtime-core";
+import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 const store = useStore();
@@ -7,13 +7,15 @@ const store = useStore();
 onMounted(() => {
   store.dispatch("generateData");
 });
+
+const counter = computed(() => store.state.counter);
 </script>
 
 <template>
   <div v-if="!store.state.isLoading">
     <h1>Vuex Counter</h1>
     <h2 class="counter">
-      {{ $store.state.counter }}
+      {{ counter }}
     </h2>
     <button>-</button>
     <input type="number" />
