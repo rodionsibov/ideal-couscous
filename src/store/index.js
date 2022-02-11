@@ -10,6 +10,9 @@ export default createStore({
         isLoading: false
     }),
     mutations: {
+        addToCounter(state, payload) {
+            state.counter += payload
+        },
         setUsers(state, value) {
             state.users = value
         },
@@ -41,7 +44,7 @@ export default createStore({
                                     department: _.sample(['Customer Support', 'Engineering', 'Sales'])
                                 }
                             })
-                        }), 3000)
+                        }), 1000)
                 })
                 commit('setUsers', data)
                 commit('setUser')

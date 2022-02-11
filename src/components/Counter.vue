@@ -1,25 +1,32 @@
 <script setup>
-import { computed, onMounted } from "@vue/runtime-core";
+import { computed, onMounted, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 const store = useStore();
+const value = ref(1)
 
 onMounted(() => {
   store.dispatch("generateData");
 });
 
-const counter = computed(() => store.state.counter);
+// const counter = computed({
+//   get: () => store.state.counter,
+//   set: (val) => store.commit('addToCounter', val)
+// });
+
+const addToCounter = (payload) => store.commit('addToCounter', payload)
+
 </script>
 
 <template>
   <div v-if="!store.state.isLoading">
     <h1>Vuex Counter</h1>
     <h2 class="counter">
-      {{ counter }}
+      {{ $store.state.counter }}
     </h2>
     <button>-</button>
     <input type="number" />
-    <button>+</button>
+    <button @click="addToCounter(value)">+</button>
   </div>
   <div v-else>Data is loading...</div>
 </template>
