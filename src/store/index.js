@@ -28,6 +28,13 @@ export default createStore({
     },
     getters: {},
     actions: {
+        async addRandomNumber({ commit }) {
+            const res = await fetch('https://www.random.org/integers/?num=1&min=-1000&max=1000&col=1&base=10&format=plain&rnd=new')
+            const data = await res.json()
+            commit('addToCounter', data)
+
+
+        },
         async generateData({ commit }) {
             faker.seed(2)
             // const randomCard = faker.helpers.createCard()
