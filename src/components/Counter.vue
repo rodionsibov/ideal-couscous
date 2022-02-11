@@ -3,29 +3,44 @@ import { computed, onMounted, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 const store = useStore();
-const value = ref(1)
+const value = ref(0);
 
 onMounted(() => {
   store.dispatch("generateData");
 });
 
-// const counter = computed({
-//   get: () => store.state.counter,
-//   set: (val) => store.commit('addToCounter', val)
-// });
+// const test = ref("FIRST_sEConD NOT");
 
-const addToCounter = (payload) => store.commit('addToCounter', payload)
-
+const addToCounter = (payload) => store.commit("addToCounter", payload);
+const subtractFromCounter = (payload) =>
+  store.commit("subtractFromCounter", payload);
 </script>
 
 <template>
+  <!-- <div style="font-size: 3rem; line-height: 4rem; font-weight: bold; margin: 50px 0 200px;">
+<div>
+    {{ test }}
+  </div>
+
+
+  <div>
+    {{
+      test
+        .split(/_| /)
+        .map((w) => w[0].toUpperCase() + w.slice(1).toLowerCase())
+        .join(" ")
+        .replace(/(\w+)\s(\w+)/g, '$2 $1')
+    }}
+  </div>
+</div> -->
+
   <div v-if="!store.state.isLoading">
     <h1>Vuex Counter</h1>
     <h2 class="counter">
       {{ $store.state.counter }}
     </h2>
-    <button>-</button>
-    <input type="number" />
+    <button @click="subtractFromCounter(value)">-</button>
+    <input type="number" v-model="value" />
     <button @click="addToCounter(value)">+</button>
   </div>
   <div v-else>Data is loading...</div>

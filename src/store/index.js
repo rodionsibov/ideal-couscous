@@ -13,6 +13,9 @@ export default createStore({
         addToCounter(state, payload) {
             state.counter += payload
         },
+        subtractFromCounter(state, payload) {
+            state.counter -= payload
+        },
         setUsers(state, value) {
             state.users = value
         },
