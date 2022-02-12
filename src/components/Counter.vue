@@ -35,7 +35,6 @@ const addRandomNumber = () => store.dispatch("addRandomNumber");
     }}
   </div>
 </div> -->
-
   <div v-if="!store.state.isLoading">
     <h1>Vuex Counter</h1>
     <h2 class="counter">
@@ -118,7 +117,22 @@ input {
   margin-right: 6px;
 }
 
+input {
+  border: 1px solid lightgray;
+  transition: border 0.2s ease-in;
+  border-radius: 2px;
+  outline: none;
+}
+
 input:invalid {
-  border: 2px solid pink;
+  border: 1px solid tomato;
+  outline: 4px solid rgba(255, 99, 71, 0.2);
+  border-radius: 2px;
+}
+
+input:focus {
+  border: 1px solid skyblue;
+  outline: 4px solid rgba(135, 206, 235, 0.2);
+  border-radius: 2px;
 }
 </style>

@@ -13,9 +13,11 @@ export default createStore({
     mutations: {
         addToCounter(state, payload) {
             state.counter += payload
+            state.history.push(state.counter)
         },
         subtractFromCounter(state, payload) {
             state.counter -= payload
+            state.history.push(state.counter)
         },
         setUsers(state, value) {
             state.users = value
