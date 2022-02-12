@@ -25,9 +25,12 @@ export default createStore({
         },
         setUser(state) {
             state.user = faker.helpers.createCard()
-        }
+        },
+       
     },
-    getters: {},
+    getters: {
+       
+    },
     actions: {
         async addRandomNumber({ commit }) {
             const res = await fetch('https://www.random.org/integers/?num=1&min=-1000&max=1000&col=1&base=10&format=plain&rnd=new')
