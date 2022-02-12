@@ -7,6 +7,7 @@ export default createStore({
         users: [],
         user: [],
         counter: 0,
+        history: [],
         isLoading: false
     }),
     mutations: {
