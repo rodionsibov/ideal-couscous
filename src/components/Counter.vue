@@ -5,12 +5,7 @@ import { useStore } from "vuex";
 const store = useStore();
 const value = ref(0);
 
-const setCustomValidity = ref(null);
-
 onMounted(() => {
-  setTimeout(() => {
-    setCustomValidity.value.focus()
-  }, 2000);
   store.dispatch("generateData");
 });
 
@@ -42,7 +37,6 @@ const addRandomNumber = () => store.dispatch("addRandomNumber");
 </div> -->
 
   <div v-if="!store.state.isLoading">
-    <input ref="setCustomValidity" type="text" value="set custom validity" />
     <h1>Vuex Counter</h1>
     <h2 class="counter">
       {{ $store.state.counter }}
@@ -122,5 +116,9 @@ input {
 .btn svg {
   width: 20px;
   margin-right: 6px;
+}
+
+input:invalid {
+  border: 2px solid pink;
 }
 </style>
