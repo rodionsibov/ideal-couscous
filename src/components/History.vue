@@ -4,15 +4,22 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const history = computed(() => store.state.history);
+const activeIndexes = computed(() => store.getters["activeIndexes"]);
 
 const value = ref(0);
+
 </script>
 
 <template>
   <div class="container">
     <h4>History</h4>
     <div class="flex">
-      <p v-for="(number, index) in history" :key="index">
+      <p
+        v-for="(number, index) in history"
+        :key="index"
+        :class="[{ bold: activeIndexes(value).includes(index) }, 'test-class']"
+      >
+        <!-- :class="activeIndexes(value).includes(index) && 'bold'" -->
         {{ number }}
       </p>
     </div>
@@ -36,5 +43,9 @@ p {
   justify-content: center;
   width: 25rem;
   margin: 2rem auto;
+}
+
+.bold {
+  font-weight: bold;
 }
 </style>

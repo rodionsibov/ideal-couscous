@@ -7,7 +7,7 @@ export default createStore({
         users: [],
         user: [],
         counter: 0,
-        history: [],
+        history: [0],
         isLoading: false
     }),
     mutations: {
@@ -28,10 +28,20 @@ export default createStore({
         setUser(state) {
             state.user = faker.helpers.createCard()
         },
-       
+
     },
     getters: {
-       
+        activeIndexes(state) {
+            return (payload) => {
+                let indexes = []
+                state.history.forEach((number, index) => {
+                    if (number === payload) {
+                        indexes.push(index)
+                    }
+                })
+                return indexes
+            }
+        }
     },
     actions: {
         async addRandomNumber({ commit }) {
