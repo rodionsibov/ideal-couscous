@@ -9,7 +9,7 @@ onMounted(() => {
   store.dispatch("generateData");
 });
 
-const regEx = ref('[0-9]{8,}r')
+// const regEx = ref('[0-9]{8,}r')
 
 // const test = ref("FIRST_sEConD NOT");
 
