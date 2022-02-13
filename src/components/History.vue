@@ -1,9 +1,11 @@
 <script setup>
-import { computed } from "@vue/runtime-core";
+import { computed, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 
 const store = useStore();
 const history = computed(() => store.state.history);
+
+const value = ref(0);
 </script>
 
 <template>
@@ -14,16 +16,17 @@ const history = computed(() => store.state.history);
         {{ number }}
       </p>
     </div>
+    <input type="number" placeholder="Search by Index" v-model="value" />
   </div>
 </template>
 
 <style scoped>
 .container {
-  margin-top: 7rem;
+  margin: 4rem 0;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 .flex {
@@ -32,7 +35,6 @@ p {
   gap: 5px 1rem;
   justify-content: center;
   width: 25rem;
-  margin: 0 auto;
-  margin-bottom: 3rem;
+  margin: 2rem auto;
 }
 </style>

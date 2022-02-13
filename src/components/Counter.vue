@@ -43,7 +43,7 @@ const addRandomNumber = () => store.dispatch("addRandomNumber");
       {{ $store.state.counter }}
     </h2>
     <button @click="subtractFromCounter(value)">-</button>
-    <input type="number" v-model="value"/>
+    <input type="number" v-model="value" />
     <!-- <input type="text" v-model="value" required :pattern="regEx" title="Requested format: [0-9]{8,}r" /> -->
     <button @click="addToCounter(value)">+</button>
     <div class="btn" @click="addRandomNumber">
@@ -82,12 +82,6 @@ button {
   cursor: pointer;
 }
 
-input {
-  padding: 0.4rem;
-  margin: 0 0.5rem;
-  text-align: center;
-}
-
 .btn {
   display: flex;
   align-items: center;
@@ -120,11 +114,14 @@ input {
   margin-right: 6px;
 }
 
-input {
+:global(input) {
+  padding: 0.4rem;
+  margin: 0 0.5rem;
+  text-align: center;
   border: 1px solid lightgray;
   transition: border 0.2s ease-in;
   border-radius: 2px;
-  outline: none;
+  /* outline: none; */
 }
 
 /* input:invalid {
