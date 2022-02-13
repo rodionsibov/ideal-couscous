@@ -9,6 +9,8 @@ onMounted(() => {
   store.dispatch("generateData");
 });
 
+const regEx = ref('[0-9]{8,}r')
+
 // const test = ref("FIRST_sEConD NOT");
 
 const addToCounter = (payload) => store.commit("addToCounter", payload);
@@ -41,7 +43,8 @@ const addRandomNumber = () => store.dispatch("addRandomNumber");
       {{ $store.state.counter }}
     </h2>
     <button @click="subtractFromCounter(value)">-</button>
-    <input type="number" v-model="value" />
+    <input type="number" v-model="value"/>
+    <!-- <input type="text" v-model="value" required :pattern="regEx" title="Requested format: [0-9]{8,}r" /> -->
     <button @click="addToCounter(value)">+</button>
     <div class="btn" @click="addRandomNumber">
       <svg
@@ -124,15 +127,24 @@ input {
   outline: none;
 }
 
-input:invalid {
-  border: 1px solid tomato;
+/* input:invalid {
   outline: 4px solid rgba(255, 99, 71, 0.2);
   border-radius: 2px;
+  background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg")
+    no-repeat 95% 50% lightsalmon;
 }
 
-input:focus {
+input:valid {
   border: 1px solid skyblue;
   outline: 4px solid rgba(135, 206, 235, 0.2);
   border-radius: 2px;
-}
+  background: url("https://assets.digitalocean.com/labs/icons/hand-thumbs-up.svg")
+    no-repeat 95% 50% lightgreen;
+} */
+/* 
+input:valid {
+  border: 1px solid green;
+  outline: 4px solid rgba(0, 128, 0, 0.2);
+  border-radius: 2px;
+} */
 </style>
